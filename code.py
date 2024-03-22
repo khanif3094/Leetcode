@@ -8,19 +8,17 @@ def solve(b):
     heapq.heapify(a)
     result = 0
     prev = 0
+    curr = 0
     while a:
-        m = heapq.heappop(a)
-        curr = (m - 1) * len(b) - prev
-        heapq.heappush(a, m)
+        m = a[0]
+        curr = curr + (m - 1- prev) * len(a) 
         for i, x in enumerate(b):
             if x < m:
                 continue 
             curr +=1
             if x == m : 
                 result += curr 
-                heapq.heappop(a)
-                prev += 1
-            print(curr, result, x, prev)
+                prev = heapq.heappop(a)
             
             
             
